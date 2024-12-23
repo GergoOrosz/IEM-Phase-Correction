@@ -26,11 +26,11 @@ The issue can be illustrated looking at the SE846's measured impulse response (I
 <img width="1266" alt="image" src="https://github.com/user-attachments/assets/4dabbd28-f70d-483c-ad92-f0dd66f336ed" />
 
 Figure 1: Measured Impulse response of SE846 (Left), 'Ideal' Minimum phase impulse response of SE846 constructed using the measured frequency response magnitude (Right).
-Comparison of the two impulse responses shown in Figure 1 confirms that the SE846's response is indeed non-minimum phase. In the real measurement, the main impulse part of the response appears to be split into a leading negative part and then a positive peak. In the ideal reconstruction, there is a much cleaner single positive peak in the response.
+Comparison of the two impulse responses shown in Figure 1 confirms that the SE846's response is indeed non-minimum phase. In the real measurement, the main impulse part of the response appears to be split into a leading negative part and then a wider positive peak. In the ideal reconstruction, there is a much cleaner single positive peak in the response.
 
 Using some digital filtering, it is possible to extract the approximate low-midrange and tweeter impulse components. Figure 2 shows this decomposition, achieved with 3 kHz low and high pass filters, noting some imperfections that are due to the filtering process and potentially inexact crossover frequency.
 
-![image](https://github.com/user-attachments/assets/6609c10a-237a-4d8f-aea0-97fc1279e9be)
+![image](https://github.com/user-attachments/assets/731db0fb-f776-4c7a-b584-b6ddce9a188b)
 
 Figure 2: IR decomposition (Midrange+sub / Tweeter), Shure SE846
 
@@ -44,14 +44,14 @@ The aim of the proposed FIR filter is to align the drivers in time and to elimin
 
 Figure 3: IR decomposition (Midrange+sub / Tweeter), Shure SE846 with the Phase correction filter applied to the audio playback chain.
 
-Figure 3 shows that the phase correction filter successfully achieves the objectives of this project. The Midrange+sub and Tweeter components are aligned in time and both appear to have the same polarity. The resulting impulse response has a single/clean positive impulse component that is very similar to the digitally reconstructed minimum phase response. Also, before the main impulse peak, pre-ringing appears to be minimal
+Figure 3 shows that the phase correction filter successfully achieves the objectives of this project. The Midrange+sub and Tweeter components are aligned in time and both appear to have the same polarity. The resulting impulse response has a single/clean positive impulse component that is very similar to the digitally reconstructed minimum phase response. Also, before the main impulse peak, pre-ringing appears to be minimal.
 
 Applying this filter of course results in some added latency, but looking at the impulse response, there should be an improvement in the sound signature, particularly in the transient response of the SE846.
 
 # How does this sound?
 
 To my ears, the effect is subtle but quite notable. Vocals particularly sound more focused and the imaging, instrument separation, and reverb get clearer. Interestingly, the tonality also changes a bit, particularly the bass sounds punchier, despite the fact that the filter does not alter the magnitude response of the SE846s at all. To me, this confirms just how important the phase response of audio systems can be and shows that the frequency response magnitude does not tell the full story of an IEM.
-I would like to invite everyone reading this who can try it on their Shure SE846s to share their thoughts on the potential subjective improvements in the sound. Of course, it is important to do any evaluations using good quality recordings.
+I would like to invite everyone reading this who can try it on their Shure SE846s and share their thoughts on the potential subjective improvements in the sound. Of course, it is important to do any evaluations using good quality recordings.
 
 Please note that this filter will not work as intended on any other IEM models.
 
@@ -74,7 +74,7 @@ To apply the FIR filter in Roon's DSP engine, follow these steps:
 3. Load the FIR Filter
 
    In the Convolution settings, click Browse to upload the FIR filter file.
-   Make sure you have the .wav or .zip file containing the FIR filter provided in this project.
+   Make sure you have the .wav or file containing the FIR filter provided in this project.
    Roon will automatically recognize the sample rate (48 kHz in this case) and apply it correctly.
    
    
@@ -87,14 +87,22 @@ To apply the FIR filter in Roon's DSP engine, follow these steps:
 # Setup in Reaper (DAW) Using ReaVerb Plugin
 
 1. In Reaper, load the track or audio you want to process. Alternatively, create a virtual loopback from your computer's audio out to the Reaper track.
+
+
 2. Click on the FX button of the track and add ReaVerb from the plugin list.
+
+
 3. Load the FIR Filter:
    In ReaVerb, click Add > File.
    Select the FIR filter file and load it.
+
+
 4. Mute the Dry Signal Path:
-  In ReaVerb, ensure the Dry Signal slider is set to -inf dB (muted).
-  Only the processed (wet) signal should pass through, this can be set to 0 dB.
-5.  If you want to compare the sound with and without the FIR filter, toggle the Convolution filter on and off in the track settings.
+   In ReaVerb, ensure the Dry Signal slider is set to -inf dB (muted).
+   Only the processed (wet) signal should pass through, this can be set to 0 dB.
+
+
+5.  If you want to compare the sound with and without the FIR filter, toggle the effect on and off in the track settings.
 
 
 
