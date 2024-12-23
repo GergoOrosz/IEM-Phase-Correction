@@ -27,6 +27,7 @@ The issue can be illustrated looking at the SE846's measured impulse response (I
 
 Figure 1: Measured Impulse response of SE846 (Left), 'Ideal' Minimum phase impulse response of SE846 constructed using the measured frequency response magnitude (Right).
 Comparison of the two impulse responses shown in Figure 1 confirms that the SE846's response is indeed non-minimum phase. In the real measurement, the main impulse part of the response appears to be split into a leading negative part and then a positive peak. In the ideal reconstruction, there is a much cleaner single positive peak in the response.
+
 Using some digital filtering, it is possible to extract the approximate midrange and tweeter impulse components. Figure 2 shows this decomposition, achieved with 3 kHz low and high pass filters, noting some imperfections that are due to the filtering process and potentially inexact crossover frequency.
 
 ![image](https://github.com/user-attachments/assets/6609c10a-237a-4d8f-aea0-97fc1279e9be)
