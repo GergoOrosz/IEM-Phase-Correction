@@ -43,14 +43,16 @@ The aim of the proposed FIR filter is to align the drivers in time and to elimin
 
 Figure 3: IR decomposition (Midrange+sub / Tweeter), Shure SE846 with the Phase correction filter applied to the audio playback chain.
 
-Figure 3 shows that the phase correction filter successfully achieves the objectives of this project. The Midrange+sub and Tweeter components are aligned in time and both appear to have the same polarity. The resulting impulse response has a single/clean positive impulse component that is very similar to the digitally reconstructed minimum phase response.
+Figure 3 shows that the phase correction filter successfully achieves the objectives of this project. The Midrange+sub and Tweeter components are aligned in time and both appear to have the same polarity. The resulting impulse response has a single/clean positive impulse component that is very similar to the digitally reconstructed minimum phase response. Also, before the main impulse peak, pre-ringing appears to be minimal
 
 Applying this filter of course results in some added latency, but looking at the impulse response, there should be an improvement in the sound signature, particularly in the transient response of the SE846.
 
 # How does this sound?
 
 To my ears, the effect is subtle but quite notable. Vocals particularly sound more focused and the imaging, instrument separation, and reverb get clearer. Interestingly, the tonality also changes a bit, particularly the bass sounds punchier, despite the fact that the filter does not alter the magnitude response of the SE846s at all. To me, this confirms just how important the phase response of audio systems can be and shows that the frequency response magnitude does not tell the full story of an IEM.
-I would like to invite everyone reading this who can try it on their Shure SE846s to share their thoughts on the potential subjective improvements in the sound. Please note that this filter will not work as intended on any other IEM models.
+I would like to invite everyone reading this who can try it on their Shure SE846s to share their thoughts on the potential subjective improvements in the sound. Of course, it is important to do any evaluations using good quality recordings.
+
+Please note that this filter will not work as intended on any other IEM models.
 
 Any questions, please get in touch in the comments.
 
@@ -83,7 +85,7 @@ To apply the FIR filter in Roon's DSP engine, follow these steps:
 
 # Setup in Reaper (DAW) Using ReaVerb Plugin
 
-1. In Reaper, load the track or audio you want to process. Alternatively create a virtual loopback from your computer's audio out to the Reaper track.
+1. In Reaper, load the track or audio you want to process. Alternatively, create a virtual loopback from your computer's audio out to the Reaper track.
 2. Click on the FX button of the track and add ReaVerb from the plugin list.
 3. Load the FIR Filter:
    In ReaVerb, click Add > File.
